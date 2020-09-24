@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import {View, Text,TouchableOpacity, StyleSheet,TextInput, Alert} from 'react-native';
+import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert} from 'react-native';
 import {db} from '../../components/Firebase/firebaseConfig';
 
 
 
-function addCustomer(entreprise,firstname, lastname, address, email){
-    db.ref("/Customer" ).push([
+let addCustomer=(entreprise,firstname, lastname, address, email) => {
+    db.ref("/Customer/" + entreprise ).push({
       entreprise,
         firstname,
         lastname,
         address,
         email,
-    ]);
-}
+  });
+};
 
 
 
@@ -42,7 +42,7 @@ export default class AddCustomer extends Component{
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
             <TextInput style={styles.itemInput} placeholder = "address" onChangeText ={(address) => this.setState({address})} />
             <TextInput style={styles.itemInput} placeholder = "email" onChangeText ={(email) => this.setState({email})} />
-            <TouchableOpacity style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
+            <TouchableHighlight style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
                 this.state.entreprise,
                 this.state.firstname,
                 this.state.lastname,
@@ -50,7 +50,7 @@ export default class AddCustomer extends Component{
                 this.state.email,
             )}>
             <Text style={styles.buttonText}>Add</Text>
-            </TouchableOpacity>
+            </TouchableHighlight>
             
 
 
