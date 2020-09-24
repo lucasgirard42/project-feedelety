@@ -117,13 +117,13 @@ export default function RegisterScreen({ navigation }) {
           rightIcon={confirmPasswordIcon}
           handlePasswordVisibility={handleConfirmPasswordVisibility}
         />
-        <FormButton title={'Register'} />
+        <FormButton title={"S'inscrire"} />
         {<FormErrorMessage error={registerError} visible={true} />}
       </Form>
       <IconButton
         style={styles.backButton}
         iconName="keyboard-backspace"
-        color={Colors.white}
+        color={Colors.mediumGrey}
         size={30}
         onPress={() => navigation.goBack()}
       />
@@ -134,7 +134,7 @@ export default function RegisterScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     padding: 15,
-    backgroundColor: Colors.mediumGrey
+    backgroundColor: Colors.white
   },
   backButton: {
     justifyContent: 'center',

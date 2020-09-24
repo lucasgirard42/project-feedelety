@@ -5,6 +5,7 @@ import AppButton from '../components/AppButton';
 import Colors from '../utils/colors';
 import useStatusBar from '../hooks/useStatusBar';
 
+
 export default function WelcomeScreen({ navigation }) {
   useStatusBar('light-content');
 
@@ -12,12 +13,11 @@ export default function WelcomeScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image source={require('../assets/flame.png')} style={styles.logo} />
-        <Text style={styles.subtitle}>Expo Firebase Starter</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <AppButton title="Login" onPress={() => navigation.navigate('Login')} />
+        <AppButton title="Se connecter" onPress={() => navigation.navigate('Login')} />
         <AppButton
-          title="Register"
+          title="S'inscrire"
           color="secondary"
           onPress={() => navigation.navigate('Register')}
         />
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: Colors.mediumGrey
+    backgroundColor: Colors.white
   },
   logoContainer: {
     position: 'absolute',
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   logo: {
-    width: 125,
+    width: 300,
     height: 125
   },
   subtitle: {
