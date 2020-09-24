@@ -1,11 +1,12 @@
-import React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import React from "react";
+import {View,StyleSheet,Button,Text,SafeAreaView,ScrollView,} from "react-native";
 
-import useStatusBar from '../hooks/useStatusBar';
-import { logout } from '../components/Firebase/firebase';
+import useStatusBar from "../hooks/useStatusBar";
+import { logout } from "../components/Firebase/firebase";
+import Constant from "expo-constants";
 
 export default function HomeScreen() {
-  useStatusBar('dark-content');
+  useStatusBar("dark-content");
   async function handleSignOut() {
     try {
       await logout();
@@ -16,12 +17,17 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Button title="Sign Out" onPress={handleSignOut} />
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+          <Text>coucou</Text>
+        </ScrollView>
+      </SafeAreaView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
