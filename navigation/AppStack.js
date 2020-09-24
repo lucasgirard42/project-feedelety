@@ -1,20 +1,10 @@
 import * as React from 'react';
-// import { createStackNavigator } from '@react-navigation/stack';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {View, Text} from 'react-native'
 import HomeScreen from '../screens/HomeScreen';
-import './Routes'
 
-// const Stack = createStackNavigator();
-
-// export default function AppStack() {
-//   return (
-//     <Stack.Navigator>
-//       <Stack.Screen name="Home" component={HomeScreen} />
-//     </Stack.Navigator>
-//   );
-// }
 
 
 
@@ -22,6 +12,14 @@ function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Settings!</Text>
+    </View>
+  );
+}
+
+function coucou() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>coucou</Text>
     </View>
   );
 }
@@ -35,6 +33,7 @@ export default function AppStack() {
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Coucou" component={coucou} />
       </Tab.Navigator>
     
     
