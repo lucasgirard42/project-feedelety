@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
-import {View, Text,TouchableHighlight, StyleSheet,TextInput} from 'react-native';
+import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert} from 'react-native';
 import {db} from '../../components/Firebase/firebaseConfig';
 
 
-function addCustomer(firstname, lastname, address, email){
-    db.ref("/Customer/").push([
+
+let addCustomer=(entreprise,firstname, lastname, address, email) => {
+    db.ref("/Customer/" + entreprise ).push({
+      entreprise,
         firstname,
         lastname,
         address,
         email,
-    ]);
-}
+  });
+};
 
 
 
 export default class AddCustomer extends Component{
     state={
+        entreprise:"",
         firstname:"",
         lastname:"", 
         address:"",
@@ -24,6 +27,7 @@ export default class AddCustomer extends Component{
 
     handleChange = (e) => { 
     this.setState({
+        entreprise: e.nativeEvent.text,
         firstname: e.nativeEvent.text,
         lastname: e.nativeEvent.text,
         address: e.nativeEvent.text,
@@ -33,11 +37,13 @@ export default class AddCustomer extends Component{
     render(){
     return(
         <View style={StyleSheet.main}>
+            <TextInput style={styles.itemInput} placeholder = "entreprise" onChangeText ={(entreprise) => this.setState({entreprise})} />
             <TextInput style={styles.itemInput} placeholder = "firstname" onChangeText ={(firstname) => this.setState({firstname})} />
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
             <TextInput style={styles.itemInput} placeholder = "address" onChangeText ={(address) => this.setState({address})} />
             <TextInput style={styles.itemInput} placeholder = "email" onChangeText ={(email) => this.setState({email})} />
-            <TouchableHighlight style={styles.button} underlayColor="white" onPress= { () => addCustomer(
+            <TouchableHighlight style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
+                this.state.entreprise,
                 this.state.firstname,
                 this.state.lastname,
                 this.state.address,
