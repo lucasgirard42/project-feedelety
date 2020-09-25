@@ -12,9 +12,6 @@ let customerRef = db.ref('/Customer');
 
 
 
-
-
-
 export default class ListCustomer extends Component {
   state = {
     customer: [],

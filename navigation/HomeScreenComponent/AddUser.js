@@ -1,22 +1,33 @@
+import { firestore } from 'firebase';
 import React, { Component } from 'react';
 import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert} from 'react-native';
 import {db} from '../../components/Firebase/firebaseConfig';
+import firebase from 'firebase';
 
 
+//  firebase.auth().onAuthStateChanged(function(user) {
+//     if (user) {
+        
+//         var user = user.email;
+        
+//     } 
+// });
 
-let addCustomer=(entreprise,firstname, lastname, address, email) => {
-    db.ref("/Customer/").push({
-      entreprise,
+function AddUsers(entreprise, firstname, lastname, address) {
+    db.ref("/users/" + entreprise).push({
+        entreprise,
         firstname,
         lastname,
         address,
-        email,
-  });
-};
+        
+    });
+}
 
 
 
-export default class AddCustomer extends Component{
+
+
+export default class AddUser extends Component{
     state={
         entreprise:"",
         firstname:"",
@@ -42,7 +53,7 @@ export default class AddCustomer extends Component{
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
             <TextInput style={styles.itemInput} placeholder = "address" onChangeText ={(address) => this.setState({address})} />
             <TextInput style={styles.itemInput} placeholder = "email" onChangeText ={(email) => this.setState({email})} />
-            <TouchableHighlight style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
+            <TouchableHighlight style={styles.button} underlayColor="white"   onPress= { () => AddUsers(
                 this.state.entreprise,
                 this.state.firstname,
                 this.state.lastname,
@@ -51,13 +62,10 @@ export default class AddCustomer extends Component{
             )}>
             <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
-            
-
-
         </View>
-
     )
     }
+    
 }
 
 
@@ -102,3 +110,4 @@ const styles = StyleSheet.create({
       justifyContent: "center",
     },
   });
+ 

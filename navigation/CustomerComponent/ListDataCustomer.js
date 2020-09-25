@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet,Modal } from 'react-native';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 
@@ -10,6 +10,8 @@ export default class ListDataCustomer extends Component {
     customer: PropTypes.array.isRequired
   };
 
+ 
+
   render() {
     return (
       <View style={styles.itemsList}>
@@ -17,10 +19,10 @@ export default class ListDataCustomer extends Component {
           return (
             <View key={index}>
               <Text style={styles.itemtext}>{customer.entreprise}</Text>
-              <Text style={styles.itemtext}>{customer.firstname}</Text>
+              {/* <Text style={styles.itemtext}>{customer.firstname}</Text>
               <Text style={styles.itemtext}>{customer.lastname}</Text>
               <Text style={styles.itemtext}>{customer.email}</Text>
-              <Text style={styles.itemtext}>{customer.address}</Text>
+              <Text style={styles.itemtext}>{customer.address}</Text> */}
             </View>
           );
         })}

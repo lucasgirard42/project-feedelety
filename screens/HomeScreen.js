@@ -2,8 +2,13 @@ import React from "react";
 import {View,StyleSheet,Button,Text,SafeAreaView,ScrollView,} from "react-native";
 
 import useStatusBar from "../hooks/useStatusBar";
-import { logout } from "../components/Firebase/firebase";
+import { logout } from "../components/Firebase/firebase"
 import Constant from "expo-constants";
+import AddUser from "../navigation/HomeScreenComponent/AddUser";
+import firebase  from 'firebase';
+
+
+
 
 export default function HomeScreen() {
   useStatusBar("dark-content");
@@ -19,6 +24,10 @@ export default function HomeScreen() {
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <Text>coucou</Text>
+        
+
+          <AddUser/>
+          
         </ScrollView>
       </SafeAreaView>
     </View>
