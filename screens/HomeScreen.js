@@ -16,7 +16,6 @@ export default function HomeScreen() {
   }
   return (
     <View style={styles.container}>
-      <Button title="Sign Out" onPress={handleSignOut} />
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <Text>coucou</Text>
