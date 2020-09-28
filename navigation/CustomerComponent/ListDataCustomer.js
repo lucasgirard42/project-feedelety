@@ -23,13 +23,13 @@ export default class ListDataCustomer extends Component {
         {this.props.customer.map((customer, index) => {
           return (
             <View key={index}>
-              <Text style={styles.itemtext}>{customer.entreprise}</Text>
+              <Text style={styles.itemtext}>{customer.entreprise}  <TouchableOpacity  onPress={ message}><Entypo name="phone" size={24} color="black"/></TouchableOpacity></Text>
               {/* <Text style={styles.itemtext}>{customer.firstname}</Text>
               <Text style={styles.itemtext}>{customer.lastname}</Text>
               <Text style={styles.itemtext}>{customer.email}</Text>
               <Text style={styles.itemtext}>{customer.address}</Text> */}
               <Text style={styles.itemtext}>{customer.phone}</Text> 
-              <TouchableOpacity  onPress={ message}><Entypo name="phone" size={24} color="black"/></TouchableOpacity>
+              
             </View>
           );
         })}
