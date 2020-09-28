@@ -4,13 +4,14 @@ import {db} from '../../components/Firebase/firebaseConfig';
 
 
 
-let addCustomer=(entreprise,firstname, lastname, address, email) => {
+let addCustomer=(entreprise,firstname, lastname, address, email,phone) => {
     db.ref("/Customer/").push({
       entreprise,
         firstname,
         lastname,
         address,
         email,
+        phone,
   });
 };
 
@@ -23,6 +24,7 @@ export default class AddCustomer extends Component{
         lastname:"", 
         address:"",
         email:"",
+        phone:"",
     };
 
     handleChange = (e) => { 
@@ -32,6 +34,7 @@ export default class AddCustomer extends Component{
         lastname: e.nativeEvent.text,
         address: e.nativeEvent.text,
         email: e.nativeEvent.text,
+        phone: e.nativeEvent.text,
     });
 }
     render(){
@@ -42,12 +45,14 @@ export default class AddCustomer extends Component{
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
             <TextInput style={styles.itemInput} placeholder = "address" onChangeText ={(address) => this.setState({address})} />
             <TextInput style={styles.itemInput} placeholder = "email" onChangeText ={(email) => this.setState({email})} />
+            <TextInput style={styles.itemInput} placeholder = "phone" onChangeText ={(phone) => this.setState({phone})} />
             <TouchableHighlight style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
                 this.state.entreprise,
                 this.state.firstname,
                 this.state.lastname,
                 this.state.address,
                 this.state.email,
+                this.state.phone,
             )}>
             <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>

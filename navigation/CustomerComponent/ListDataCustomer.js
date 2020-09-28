@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,Modal } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
+import Test from '../TestComponent/Test';
+import { Entypo } from '@expo/vector-icons';
 
 
+
+const message = () => {
+  
+  console.log("hello world");
+}
 
 export default class ListDataCustomer extends Component {
   static propTypes = {
     customer: PropTypes.array.isRequired
   };
-
- 
 
   render() {
     return (
@@ -22,7 +27,9 @@ export default class ListDataCustomer extends Component {
               {/* <Text style={styles.itemtext}>{customer.firstname}</Text>
               <Text style={styles.itemtext}>{customer.lastname}</Text>
               <Text style={styles.itemtext}>{customer.email}</Text>
-              <Text style={styles.itemtext}>{customer.address}</Text> */}
+              <Text style={styles.itemtext}>{customer.address}</Text> 
+              <Text style={styles.itemtext}>{customer.phone}</Text> */}
+              <TouchableOpacity  onPress={ message}><Entypo name="phone" size={24} color="black"/></TouchableOpacity>
             </View>
           );
         })}

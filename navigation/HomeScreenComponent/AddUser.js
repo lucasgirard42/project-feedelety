@@ -5,13 +5,9 @@ import {db} from '../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
 
 
-//  firebase.auth().onAuthStateChanged(function(user) {
-//     if (user) {
-        
-//         var user = user.email;
-        
-//     } 
-// });
+
+
+
 
 function AddUsers(entreprise, firstname, lastname, address) {
     db.ref("/users/" + entreprise).push({
@@ -23,10 +19,6 @@ function AddUsers(entreprise, firstname, lastname, address) {
     });
 }
 
-
-
-
-
 export default class AddUser extends Component{
     state={
         entreprise:"",
@@ -34,7 +26,20 @@ export default class AddUser extends Component{
         lastname:"", 
         address:"",
         email:"",
+        userEmail: ""
     };
+
+    componentDidMount(){
+      let self = this
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {           
+            var user = user.email;
+            self.setState({
+              userEmail: user
+            })         
+        } 
+      });
+    }
 
     handleChange = (e) => { 
     this.setState({
@@ -52,7 +57,7 @@ export default class AddUser extends Component{
             <TextInput style={styles.itemInput} placeholder = "firstname" onChangeText ={(firstname) => this.setState({firstname})} />
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
             <TextInput style={styles.itemInput} placeholder = "address" onChangeText ={(address) => this.setState({address})} />
-            <TextInput style={styles.itemInput} placeholder = "email" onChangeText ={(email) => this.setState({email})} />
+            <TextInput style={styles.itemInput} placeholder = "email" value={this.state.userEmail} onChangeText ={(email) => this.setState({email})} />
             <TouchableHighlight style={styles.button} underlayColor="white"   onPress= { () => AddUsers(
                 this.state.entreprise,
                 this.state.firstname,
