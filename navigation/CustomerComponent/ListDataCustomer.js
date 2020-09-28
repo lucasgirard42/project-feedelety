@@ -42,11 +42,14 @@ const styles = StyleSheet.create({
   itemsList: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginTop: 50,
+
   },
   itemtext: {
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+
   }
 });

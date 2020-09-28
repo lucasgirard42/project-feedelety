@@ -41,8 +41,8 @@ export default class ListCustomer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    // backgroundColor: '#ebebeb'
+    backgroundColor: '#ebebeb',
+    marginTop: 50,
+    flex: 0,
   }
 });
