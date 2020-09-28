@@ -6,7 +6,7 @@ import ListDataCustomer from './ListDataCustomer';
 import {db} from '../../components/Firebase/firebaseConfig';
 
 
-let customerRef = db.ref('/Customer');
+let customerRef = db.ref('/Customer/');
 
 
 

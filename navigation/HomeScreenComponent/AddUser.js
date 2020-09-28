@@ -5,10 +5,6 @@ import {db} from '../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
 
 
-
-
-
-
 function AddUsers(entreprise, firstname, lastname, address) {
     db.ref("/users/" + entreprise).push({
         entreprise,

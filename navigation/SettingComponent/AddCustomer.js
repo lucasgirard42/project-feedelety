@@ -5,7 +5,7 @@ import {db} from '../../components/Firebase/firebaseConfig';
 
 
 let addCustomer=(entreprise,firstname, lastname, address, email,phone) => {
-    db.ref("/Customer/").push({
+    db.ref("/Customer" ).push({
       entreprise,
         firstname,
         lastname,

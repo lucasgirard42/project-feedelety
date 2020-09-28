@@ -1,5 +1,6 @@
 import * as React from "react";
 import { View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
+import TestphoneCall from "../TestComponent/TestPhoneCall";
 import ListCustomer from "./ListCustomer";
 import ListDataCustomer from "./ListDataCustomer";
 
@@ -10,6 +11,7 @@ export default function Customer() {
         <ScrollView style={styles.scrollView}>
           <Text>Liste des clients</Text>
           <ListCustomer />
+          <TestphoneCall />
         </ScrollView>
       </SafeAreaView>
     </View>
