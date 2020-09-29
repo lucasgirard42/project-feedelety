@@ -1,25 +1,66 @@
-import React, { Component } from "react";
-import {Alert,Modal,StyleSheet,Text,TouchableHighlight,View, TextInput} from "react-native";
-import PropTypes from 'prop-types';
-
-
-
-
-export default class TestphoneCall extends  Component{
-    render() {
-        return(
-            <View>
-                <TextInput
-                    
-                    autoCompleteType={"tel"}
-                    dataDetectorTypes={'phoneNumber'}
-                    editable={false}
-                    multiline
-                    {...this.props}
-                    >
-                    {+33603366705}
-                </TextInput>
-            </View>
-        )
-    }
-}
+'use strict';
+ 
+import React from 'react';
+import { Component } from 'react';
+ 
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity
+} from 'react-native';
+ 
+// either import the whole module and call as Communications.method()
+import Communications from 'react-native-communications';
+ 
+// or can now import single methods and call straight via the method name
+// import { web, phonecall } from 'react-native-communications';
+// e.g. onPress={() => { web('http://www.github.com') }}
+ 
+export default class TestPhoneCall extends Component{
+ 
+  render() {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => Communications.phonecall('0123456789', true)}>
+          <View style={styles.holder}>
+            <Text style={styles.text}>Make phonecall</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => Communications.email(['emailAddress1', 'emailAddress2'],null,null,'My Subject','My body text')}>
+          <View style={styles.holder}>
+            <Text style={styles.text}>Send an email</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => Communications.text('0123456789')}>
+          <View style={styles.holder}>
+            <Text style={styles.text}>Send a text/iMessage</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => Communications.web('https://github.com/facebook/react-native')}>
+          <View style={styles.holder}>
+            <Text style={styles.text}>Open react-native repo on Github</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+};
+ 
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'rgb(253,253,253)',
+  },
+  holder: {
+    flex: 0.25,
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 32,
+  },
+});
+ 
+AppRegistry.registerComponent('RNCommunications', () => RNCommunications);

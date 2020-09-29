@@ -6,6 +6,7 @@ import { logout } from "../components/Firebase/firebase"
 import Constant from "expo-constants";
 import AddUser from "../navigation/HomeScreenComponent/AddUser";
 import firebase  from 'firebase';
+import TestUserId from "../navigation/TestComponent/TestUserId";
 
 
 
@@ -24,7 +25,8 @@ export default function HomeScreen() {
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <Text>coucou</Text>
-          <AddUser/>
+          {/* <AddUser/> */}
+          <TestUserId />
         </ScrollView>
       </SafeAreaView>
     </View>

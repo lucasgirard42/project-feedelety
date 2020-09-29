@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 import TestphoneCall from "../TestComponent/TestPhoneCall";
 import ListCustomer from "./ListCustomer";
 import ListDataCustomer from "./ListDataCustomer";
+import GoogleMapsTest from "../TestComponent/GoogleMapsTest"
+
 
 export default function Customer() {
   return (
@@ -11,7 +13,7 @@ export default function Customer() {
         <ScrollView style={styles.scrollView}>
           <Text>Liste des clients</Text>
           <ListCustomer />
-          <TestphoneCall />
+          {/* <GoogleMapsTest/> */}
         </ScrollView>
       </SafeAreaView>
     </View>

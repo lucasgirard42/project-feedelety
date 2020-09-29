@@ -6,25 +6,25 @@ import firebase from 'firebase';
 
 
 
-
-function AddUsers(entreprise, firstname, lastname, address) {
-    db.ref("users/" + entreprise).push({
-        entreprise,
-        firstname,
-        lastname,
-        address,
+function AddUsers(compagny, userUid,userEmail) {
+    db.ref("compagny/" + userUid).set({
+        compagny,
+        userUid,
+        userEmail
+        
         
     });
 }
 
-export default class AddUser extends Component{
+
+
+export default class TestUserId extends Component{
     state={
-        entreprise:"",
-        firstname:"",
-        lastname:"", 
-        address:"",
-        email:"",
-        userEmail: ""
+        compagny:"",
+        userUid:"",
+        userEmail:"",
+        
+      
     };
 
     componentDidMount(){
@@ -32,9 +32,13 @@ export default class AddUser extends Component{
       firebase.auth().onAuthStateChanged(function(user) {
         console.log(user);
         if (user) {           
+            var userUid = user.uid;
             var user = user.email;
+           
             self.setState({
-              userEmail: user
+               userUid,
+               userEmail: user
+
             })         
         } 
       });
@@ -42,27 +46,23 @@ export default class AddUser extends Component{
 
     handleChange = (e) => { 
     this.setState({
-        entreprise: e.nativeEvent.text,
-        firstname: e.nativeEvent.text,
-        lastname: e.nativeEvent.text,
-        address: e.nativeEvent.text,
-        email: e.nativeEvent.text,
+        compagny: e.nativeEvent.text,
+        
     });
 }
     render(){
     return(
         <View style={StyleSheet.main}>
-            <TextInput style={styles.itemInput} placeholder = "entreprise" onChangeText ={(entreprise) => this.setState({entreprise})} />
-            <TextInput style={styles.itemInput} placeholder = "firstname" onChangeText ={(firstname) => this.setState({firstname})} />
-            <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
-            <TextInput style={styles.itemInput} placeholder = "address" onChangeText ={(address) => this.setState({address})} />
+            <TextInput style={styles.itemInput} placeholder = "compagny" onChangeText ={(compagny) => this.setState({compagny})} />
+            
+            <TextInput style={styles.itemInput} placeholder = "userUid" value={this.state.userUid} onChangeText ={(userUid) => this.setState({userUid})} />
             <TextInput style={styles.itemInput} placeholder = "email" value={this.state.userEmail} onChangeText ={(email) => this.setState({email})} />
+
             <TouchableHighlight style={styles.button} underlayColor="white"   onPress= { () => AddUsers(
-                this.state.entreprise,
-                this.state.firstname,
-                this.state.lastname,
-                this.state.address,
-                this.state.email,
+                this.state.compagny,
+                this.state.userUid,
+                this.state.userEmail,
+                
             )}>
             <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
