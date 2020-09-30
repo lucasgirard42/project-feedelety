@@ -5,11 +5,11 @@ import firebase from 'firebase';
 
 
 
-let addCustomer=(userUid,entreprise,firstname, lastname, address, email,phone, name) => {
+let addCustomer=(userUid,entreprise,firstname, lastname, address, email,phone) => {
     db.ref('compagny/'+ userUid+ '/customer' ).push({
         
         entreprise,
-        name,
+        
         firstname,
         lastname,
         address,
@@ -24,7 +24,7 @@ export default class AddCustomer extends Component{
     state={
         userUid:"",
         entreprise:"",
-        name:"",
+        
         firstname:"",
         lastname:"", 
         address:"",
@@ -52,7 +52,7 @@ export default class AddCustomer extends Component{
     handleChange = (e) => { 
     this.setState({
         entreprise: e.nativeEvent.text,
-        name: e.nativeEvent.text,
+        
         firstname: e.nativeEvent.text,
         lastname: e.nativeEvent.text,
         address: e.nativeEvent.text,
@@ -64,7 +64,7 @@ export default class AddCustomer extends Component{
     return(
         <View style={StyleSheet.main}>
             <TextInput style={styles.itemInput} placeholder = "entreprise" onChangeText ={(entreprise) => this.setState({entreprise})} />
-            <TextInput style={styles.itemInput} placeholder = "name" onChangeText ={(name) => this.setState({name})} />
+            
             <TextInput style={styles.itemInput} placeholder = "firstname" onChangeText ={(firstname) => this.setState({firstname})} />
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
             <TextInput style={styles.itemInput} placeholder = "address" onChangeText ={(address) => this.setState({address})} />
@@ -75,7 +75,7 @@ export default class AddCustomer extends Component{
             <TouchableHighlight style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
                 this.state.userUid,
                 this.state.entreprise,
-                this.state.name,
+                
                 this.state.firstname,
                 this.state.lastname,
                 this.state.address,
