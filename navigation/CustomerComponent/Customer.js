@@ -4,6 +4,7 @@ import TestphoneCall from "../TestComponent/TestPhoneCall";
 import ListCustomer from "./ListCustomer";
 import ListDataCustomer from "./ListDataCustomer";
 import GoogleMapsTest from "../TestComponent/GoogleMapsTest"
+import TestListCustomer from "../TestComponent/TestListCustomer";
 
 
 export default function Customer() {
@@ -14,6 +15,7 @@ export default function Customer() {
           <Text>Liste des clients</Text>
           <ListCustomer />
           {/* <GoogleMapsTest/> */}
+          {/* <TestListCustomer /> */}
         </ScrollView>
       </SafeAreaView>
     </View>

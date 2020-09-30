@@ -30,7 +30,7 @@ export default class AddUser extends Component{
     componentDidMount(){
       let self = this
       firebase.auth().onAuthStateChanged(function(user) {
-        console.log(user);
+        
         if (user) {           
             var user = user.email;
             self.setState({

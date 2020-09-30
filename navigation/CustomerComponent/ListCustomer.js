@@ -4,9 +4,16 @@ import { View, Text, StyleSheet } from 'react-native';
 import ListDataCustomer from './ListDataCustomer';
 
 import {db} from '../../components/Firebase/firebaseConfig';
+import firebase from 'firebase';
 
 
-let customerRef = db.ref('/Customer/');
+
+// let customerRef =
+//   firebase.database().ref('compagny/'+ userUid + '/customer/'.once("value", snapshot => {
+//     console.log(snapshot.val());
+//   }))
+
+
 
 
 
@@ -14,16 +21,31 @@ let customerRef = db.ref('/Customer/');
 
 export default class ListCustomer extends Component {
   state = {
+    
     customer: [],
     
   };
 
   componentDidMount() {
-    customerRef.on('value', snapshot => {
-      let data = snapshot.val();
-      let customer = Object.values(data);
-      this.setState({ customer });
-    });
+    let customerRef;
+    let self = this
+    firebase.auth().onAuthStateChanged(function(user){
+
+      if (user) {
+        var userUid = user.uid;
+        self.setState({userUid})
+        customerRef = db.ref('/compagny/'+ userUid + '/customer');
+      }
+
+      customerRef.on('value', snapshot => {
+        let data = snapshot.val();
+        let customer = Object.values(data);
+        let userUid = Object.values(data);
+        self.setState({ customer, userUid });
+        
+      });
+    })
+
   }
 
   render() {
