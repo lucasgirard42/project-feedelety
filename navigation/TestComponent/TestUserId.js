@@ -30,7 +30,7 @@ export default class TestUserId extends Component{
     componentDidMount(){
       let self = this
       firebase.auth().onAuthStateChanged(function(user) {
-        console.log(user);
+        
         if (user) {           
             var userUid = user.uid;
             var user = user.email;

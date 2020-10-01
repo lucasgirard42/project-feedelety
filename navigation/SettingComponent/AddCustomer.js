@@ -35,7 +35,7 @@ export default class AddCustomer extends Component{
     componentDidMount(){
       let self = this
       firebase.auth().onAuthStateChanged(function(user) {
-        console.log(user);
+        
         if (user) {           
             var userUid = user.uid;
             
