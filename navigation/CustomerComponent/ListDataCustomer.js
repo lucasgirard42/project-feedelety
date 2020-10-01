@@ -26,7 +26,7 @@ export default class ListDataCustomer extends Component {
         
           return (
             <View key={index}>
-              <Text style={styles.itemtext}>{customer.entreprise}  
+              <Text style={styles.itemtext}>{customer.lastname} {customer.firstname}  
                 <TouchableOpacity onPress={ () => Communication.phonecall (phone, true)}>
                   <Entypo name="phone" size={24} color="black"/>
                 </TouchableOpacity>
