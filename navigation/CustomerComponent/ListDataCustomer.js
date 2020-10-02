@@ -6,6 +6,7 @@ import Test from '../TestComponent/Test';
 import { Entypo, FontAwesome5 } from '@expo/vector-icons';
 import Communication from 'react-native-communications';
 import { Value } from 'react-native-reanimated';
+import {ListItem, Avatar} from 'react-native-elements';
 
 
 
@@ -25,8 +26,8 @@ export default class ListDataCustomer extends Component {
         //  console.log(email);
         
           return (
-            <View key={index}>
-              <Text style={styles.itemtext}>{customer.lastname} {customer.firstname}  
+            <ListItem key={index} bottomDivider>
+              <ListItem.Title style={styles.iListItem}>{customer.lastname} {customer.firstname}  
                 <TouchableOpacity onPress={ () => Communication.phonecall (phone, true)}>
                   <Entypo name="phone" size={24} color="black"/>
                 </TouchableOpacity>
@@ -36,15 +37,16 @@ export default class ListDataCustomer extends Component {
                 <TouchableOpacity onPress={ () => Communication.email([email],null,null,'objet:','Bonjour')}>
                   <Entypo name="email" size={24} color="black" />
                 </TouchableOpacity>
-              </Text>
+              </ListItem.Title>
               {/* <Text style={styles.itemtext}>{customer.firstname}</Text>
               <Text style={styles.itemtext}>{customer.lastname}</Text>
               <Text style={styles.itemtext}>{customer.email}</Text>
               <Text style={styles.itemtext}>{customer.address}</Text> 
-              <Text style={styles.itemtext}>{customer.phone}</Text> */}
+            <Text style={styles.itemtext}>{customer.phone}</Text> */}
               
               
-            </View>
+              
+            </ListItem>
           );
         })}
       </View>

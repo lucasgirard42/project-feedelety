@@ -3,15 +3,12 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import ListDataCustomer from './ListDataCustomer';
 
+
 import {db} from '../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
+import TestListCustomer from '../TestComponent/TestListCustomer';
 
 
-
-// let customerRef =
-//   firebase.database().ref('compagny/'+ userUid + '/customer/'.once("value", snapshot => {
-//     console.log(snapshot.val());
-//   }))
 
 
 
@@ -66,5 +63,6 @@ const styles = StyleSheet.create({
     // backgroundColor: '#ebebeb',
     marginTop: 50,
     flex: 0,
-  }
+  },
+  
 });

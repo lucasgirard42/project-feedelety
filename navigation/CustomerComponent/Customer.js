@@ -7,6 +7,8 @@ import GoogleMapsTest from "../TestComponent/GoogleMapsTest"
 import TestListCustomer from "../TestComponent/TestListCustomer";
 
 
+
+
 export default function Customer() {
   return (
     <View style={styles.container}>
@@ -26,8 +28,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems:"center",
-    marginTop: 50,
+    // alignItems:"center",
+    // marginTop: 50,
 
   },
 });

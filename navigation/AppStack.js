@@ -6,6 +6,7 @@ import {View, Text} from 'react-native'
 import HomeScreen from '../screens/HomeScreen';
 import Setting from './SettingComponent/Setting';
 import Customer from './CustomerComponent/Customer';
+// import Test from './TestComponent/TestListCustomer';
 
 
 
@@ -27,6 +28,7 @@ export default function AppStack() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Client" component={Customer} />
         <Tab.Screen name="Setting" component={Setting} />
+        {/* <Tab.Screen name="test" component={ Test }/> */}
       </Tab.Navigator>
     
     
