@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert} from 'react-native';
+import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert, Button, Image, SafeAreaView, ScrollView} from 'react-native';
 import {db} from '../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
+import * as ImagePicker from 'expo-image-picker';
 
 
 
-let addCustomer=(userUid,entreprise,firstname, lastname, address,city, email,phone) => {
+let addCustomer=(userUid,entreprise,firstname, lastname, address,city, email,phone,image) => {
     db.ref('compagny/'+ userUid+ '/customer' ).push({
         
         entreprise,
-        
         firstname,
         lastname,
         address,
         city,
         email,
         phone,
+        image,
   });
-  
 };
 
 
@@ -31,20 +31,16 @@ export default class AddCustomer extends Component{
         city:"",
         email:"",
         phone:"",
+        image: null,
     };
 
     componentDidMount(){
       let self = this
       firebase.auth().onAuthStateChanged(function(user) {
-        
         if (user) {           
             var userUid = user.uid;
-            
-           
             self.setState({
                userUid,
-               
-
             })         
         } 
       });
@@ -59,11 +55,32 @@ export default class AddCustomer extends Component{
         city: e.nativeEvent.text,
         email: e.nativeEvent.text,
         phone: e.nativeEvent.text,
+        image: e.nativeEvent.text,
     });
-}
+  }
+
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+    });
+
+    alert(result.uri);
+    console.log(result)
+
+    if (!result.cancelled) {
+      this.setState({ image: result.uri });
+    }
+  };
+
+
+
     render(){
-    return(
+      let { image } = this.state;
+      return(
         <View style={StyleSheet.main}>
+          <SafeAreaView>
+            <ScrollView>
             <TextInput style={styles.itemInput} placeholder = "entreprise" onChangeText ={(entreprise) => this.setState({entreprise})} />
             <TextInput style={styles.itemInput} placeholder = "firstname" onChangeText ={(firstname) => this.setState({firstname})} />
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
@@ -71,6 +88,9 @@ export default class AddCustomer extends Component{
             <TextInput style={styles.itemInput} placeholder = "city" onChangeText ={(city) => this.setState({city})} />
             <TextInput style={styles.itemInput} placeholder = "email" onChangeText ={(email) => this.setState({email})} />
             <TextInput style={styles.itemInput} placeholder = "phone" onChangeText ={(phone) => this.setState({phone})} />
+            <Button title="Select Image" onPress={this._pickImage} />
+              {image &&
+              <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
             <TextInput style={styles.itemInput} placeholder = "userUid" value={this.state.userUid} onChangeText ={(userUid) => this.setState({userUid})} />
 
             <TouchableHighlight style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
@@ -82,15 +102,13 @@ export default class AddCustomer extends Component{
                 this.state.city,
                 this.state.email,
                 this.state.phone,
-                
+                this.state.image,
             )}>
             <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
-            
-
-
+            </ScrollView>
+            </SafeAreaView>
         </View>
-
     )
     }
 }

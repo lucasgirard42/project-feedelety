@@ -27,6 +27,7 @@ export default class ListDataCustomer extends Component {
         
           return (
             <ListItem key={index} bottomDivider>
+              <Avatar rounded source={{uri:customer.image,}}/>
               <ListItem.Title style={styles.iListItem}>{customer.lastname} {customer.firstname}  
                 <TouchableOpacity onPress={ () => Communication.phonecall (phone, true)}>
                   <Entypo name="phone" size={24} color="black"/>
