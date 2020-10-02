@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert} from 'react-native';
 import {db} from '../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
+import Modal from "./testalert"
+
+
 
 
 
@@ -64,7 +67,9 @@ export default class AddUser extends Component{
                 this.state.address,
                 this.state.email,
             )}>
-            <Text style={styles.buttonText}>Add</Text>
+            
+
+            <Modal style={styles.buttonText}>Add</Modal>
             </TouchableHighlight>
         </View>
     )
