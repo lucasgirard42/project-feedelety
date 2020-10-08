@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,AppRegistry,TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-
+import Communication from 'react-native-communications';
  import { Avatar, Icon} from 'react-native-elements';
 import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";;
 import { Thumbnail, List, ListItem, Separator } from 'native-base';
@@ -26,29 +26,52 @@ export default class ListDataCustomer extends Component {
               <View>
                   <Collapse style={{borderBottomWidth:1,borderTopWidth:1}}>
                     <CollapseHeader style={{flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#E6E6E6'}}>
-                      <View style={{width:'25%',alignItems:'center'}}>
-                        <Thumbnail source={{uri: 'https://www.biography.com/.image/t_share/MTQ3NjYxMzk4NjkwNzY4NDkz/muhammad_ali_photo_by_stanley_weston_archive_photos_getty_482857506.jpg'}} />
+                      <View key={index} style={{width:'25%',alignItems:'center'}}>
+                        <Thumbnail source={{uri: customer.image, }} />
                       </View>
                       <View style={{width:'60%'}}>
-                        <Text>Name : Mohammed Ali Kley</Text>
-                        <Text>Profession: Boxer</Text>
+                        <Text>{customer.lastname} {customer.firstname}</Text>
                       </View>
                     </CollapseHeader>
                     <CollapseBody style={{alignItems:'center',justifyContent:'center',flexDirection:'row',backgroundColor:'#EDEDED'}}>
                       <Collapse style={{flexDirection:'row'}}>
                         <CollapseHeader>
-                          <Thumbnail source={{uri: 'https://cdn3.iconfinder.com/data/icons/trico-circles-solid/24/Circle-Solid-Phone-512.png'}} />
+                        <TouchableOpacity onPress={ () => Communication.phonecall (phone, true)}>
+                          <Icon style={styles.icon}  name="phone"  type="entypo" color="white" backgroundColor="#00C829"  />
+                        </TouchableOpacity>
                         </CollapseHeader>
                         <CollapseBody style={{alignItems:'center',justifyContent:'center',padding:10}}>
-                          <Text>+1 310 346 0018</Text>
+                          <Text>{phone}</Text>
                         </CollapseBody>
                       </Collapse>
                       <Collapse style={{flexDirection:'row'}}>
                         <CollapseHeader>
-                          <Thumbnail source={{uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/1674-200.png'}} />
+                          <TouchableOpacity onPress={() => Communication.text(phone)}>
+                            <Icon style={styles.icon} name="message" type="entypo" color="white" backgroundColor="#FFBD00" />
+                          </TouchableOpacity>
                         </CollapseHeader>
                         <CollapseBody style={{alignItems:'center',justifyContent:'center',padding:10}}>
-                          <Text>sample@sample.ma</Text>
+                          <Text>{phone}</Text>
+                        </CollapseBody>
+                      </Collapse>
+                      <Collapse style={{flexDirection:'row'}}>
+                        <CollapseHeader>
+                          <TouchableOpacity onPress={ () => Communication.email([email],null,null,'objet:','Bonjour')}>
+                            <Icon style={styles.icon} name="email" type="entypo"  color="white" backgroundColor="#5794FA" />
+                          </TouchableOpacity>
+                        </CollapseHeader>
+                        <CollapseBody style={{alignItems:'center',justifyContent:'center',padding:10}}>
+                          <Text>{email}</Text>
+                        </CollapseBody>
+                      </Collapse>
+                      <Collapse style={{flexDirection:'row'}}>
+                        <CollapseHeader>
+                          <TouchableOpacity onPress={ () => Communication.email([email],null,null,'objet:','Bonjour')}>
+                            <Icon style={styles.icon} name="info" type="entypo"  color="white" backgroundColor="black" />
+                          </TouchableOpacity>
+                        </CollapseHeader>
+                        <CollapseBody style={{alignItems:'center',justifyContent:'center',padding:10}}>
+                          <Text>{email}</Text>
                         </CollapseBody>
                       </Collapse>
                     </CollapseBody>
