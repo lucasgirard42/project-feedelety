@@ -37,7 +37,7 @@ iconPress(id){
                         <Text>{customer.lastname} {customer.firstname}</Text>
                       </View>
                     </CollapseHeader>
-                    <CollapseBody style={{alignItems:'center',justifyContent:'center',flexDirection:'row',backgroundColor:'#EDEDED'}}>
+                    <CollapseBody style={{padding:'5%',justifyContent:'space-between',flexDirection:'row',backgroundColor:'#EDEDED'}}>
                       <Collapse style={{flexDirection:'row'}}>
                         <CollapseHeader>
                         <TouchableOpacity onPress={ () => Communication.phonecall (phone, true)}>
@@ -96,6 +96,10 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent: "center",
   },
+<<<<<<< HEAD
+=======
+
+>>>>>>> f627ea6c8f47b5aadeba3485aaff6c37f72c33ad
 });
 AppRegistry.registerComponent('RNCommunications', () => RNCommunications);
   
