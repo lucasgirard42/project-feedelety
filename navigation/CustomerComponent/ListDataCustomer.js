@@ -33,7 +33,7 @@ export default class ListDataCustomer extends Component {
                         <Text>{customer.lastname} {customer.firstname}</Text>
                       </View>
                     </CollapseHeader>
-                    <CollapseBody style={{alignItems:'center',justifyContent:'center',flexDirection:'row',backgroundColor:'#EDEDED'}}>
+                    <CollapseBody style={{padding:'5%',justifyContent:'space-between',flexDirection:'row',backgroundColor:'#EDEDED'}}>
                       <Collapse style={{flexDirection:'row'}}>
                         <CollapseHeader>
                         <TouchableOpacity onPress={ () => Communication.phonecall (phone, true)}>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent: "center",
   },
-  
+
 });
 
 AppRegistry.registerComponent('RNCommunications', () => RNCommunications);
