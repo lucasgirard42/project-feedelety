@@ -1,9 +1,9 @@
 import React from "react";
-import {View,StyleSheet,Button,Text,SafeAreaView,ScrollView,} from "react-native";
+import {View,StyleSheet,Text,SafeAreaView,ScrollView,} from "react-native";
 
 import useStatusBar from "../../hooks/useStatusBar";
 import { logout } from "./firebase";
-
+import { Button } from "react-native-elements";
 import Constant from "expo-constants";
 
 
@@ -30,5 +30,7 @@ export default function HomeScreen() {
   const styles = StyleSheet.create({
     container: {
       flex: 2,
+      position: 'absolute',
+      bottom:0
     },
   });

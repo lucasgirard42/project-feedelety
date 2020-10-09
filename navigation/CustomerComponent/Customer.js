@@ -14,7 +14,7 @@ export default function Customer() {
     <View style={styles.container}>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
-          <Text>Liste des clients</Text>
+          <Text style={styles.Text} >Liste des clients</Text>
           <ListCustomer />
         </ScrollView>
       </SafeAreaView>
@@ -28,6 +28,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // alignItems:"center",
     // marginTop: 50,
+    
 
   },
+
+  Text: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    textAlign: 'center',
+  },
+
 });
