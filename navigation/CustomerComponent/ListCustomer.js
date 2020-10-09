@@ -19,7 +19,8 @@ import TestListCustomer from '../TestComponent/TestListCustomer';
 export default class ListCustomer extends Component {
   state = {
     
-    customer: [],
+    customer: {},
+    data: []
     
   };
 
@@ -37,9 +38,12 @@ export default class ListCustomer extends Component {
       customerRef.on('value', snapshot => {
         let data = snapshot.val();
         let customer = Object.values(data);
-        let userUid = Object.values(data);
-        self.setState({ customer, userUid });
-        
+
+        self.setState({ 
+          customer: customer,
+          data: data
+         });      
+         
       });
     })
 

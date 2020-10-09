@@ -2,3 +2,11 @@ https://www.freecodecamp.org/news/how-to-make-your-react-native-app-respond-grac
 
 
 https://www.npmjs.com/package/react-native-contacts
+
+
+npm install firebase
+npm install react native element
+npm install native bases 
+npm install accordion-collapse-react-native
+npm install react-native-communications,
+npm install expo-image-picker

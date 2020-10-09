@@ -16,8 +16,6 @@ export default function Customer() {
         <ScrollView style={styles.scrollView}>
           <Text>Liste des clients</Text>
           <ListCustomer />
-          {/* <GoogleMapsTest/> */}
-          {/* <TestListCustomer /> */}
         </ScrollView>
       </SafeAreaView>
     </View>
