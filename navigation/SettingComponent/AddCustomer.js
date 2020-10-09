@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert, Button, Image, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert, Button, Image, SafeAreaView, ScrollView, KeyboardAvoidingView} from 'react-native';
 import {db} from '../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
 import * as ImagePicker from 'expo-image-picker';
@@ -78,9 +78,8 @@ export default class AddCustomer extends Component{
     render(){
       let { image } = this.state;
       return(
+          <KeyboardAvoidingView style={styles.container} behavior="padding"  >
         <View style={StyleSheet.main}>
-          <SafeAreaView>
-            <ScrollView>
             <TextInput style={styles.itemInput} placeholder = "entreprise" onChangeText ={(entreprise) => this.setState({entreprise})} />
             <TextInput style={styles.itemInput} placeholder = "firstname" onChangeText ={(firstname) => this.setState({firstname})} />
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
@@ -106,9 +105,10 @@ export default class AddCustomer extends Component{
             )}>
             <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
-            </ScrollView>
-            </SafeAreaView>
+            {/* </ScrollView> */}
+            {/* </SafeAreaView> */}
         </View>
+          </KeyboardAvoidingView>
     )
     }
 }

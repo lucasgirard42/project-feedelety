@@ -2,7 +2,7 @@ import React from "react";
 import {View,StyleSheet,Button,Text,SafeAreaView,ScrollView,} from "react-native";
 
 import useStatusBar from "../../hooks/useStatusBar";
-import { logout } from "../Firebase/firebase";
+import { logout } from "./firebase";
 
 import Constant from "expo-constants";
 
@@ -21,7 +21,6 @@ export default function HomeScreen() {
         <Button title="Sign Out" onPress={handleSignOut} />
         <SafeAreaView style={styles.container}>
           <ScrollView style={styles.scrollView}>
-            <Text>coucou</Text>
           </ScrollView>
         </SafeAreaView>
       </View>

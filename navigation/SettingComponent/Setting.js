@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, Text } from "react-native";
 import AddCustomer from "./AddCustomer";
-import HomeScreen from "../../components/Firebase/test"
+import HomeScreen from "../../components/Firebase/buttonSignOutSetting"
 
 
 

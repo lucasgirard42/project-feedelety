@@ -96,10 +96,6 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent: "center",
   },
-<<<<<<< HEAD
-=======
-
->>>>>>> f627ea6c8f47b5aadeba3485aaff6c37f72c33ad
 });
 AppRegistry.registerComponent('RNCommunications', () => RNCommunications);
   

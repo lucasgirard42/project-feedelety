@@ -24,7 +24,6 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
-          <Text>coucou</Text>
           {/* <AddUser/> */}
           <TestUserId />
         </ScrollView>
