@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import ListCustomer from "./ListCustomer";
+import ListCustomer from "./Component/ListCustomer";
 
 export default class Customer extends React.Component {
 

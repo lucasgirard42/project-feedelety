@@ -14,27 +14,20 @@
       
     }
 
-    
+  
     
   iconPress(id){
     console.log(id);
   }
     render() {
       const c = this.props.customer;
+      
       return (
           <View  >
-           
             <Collapse  style={{borderBottomWidth:1,borderTopWidth:1}}>
               <CollapseHeader style={{flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#E6E6E6'}}>
                 <View  style={{width:'25%',alignItems:'center'}}>
                   <Thumbnail source={{uri: c.image }} />
-                      <Button
-                        icon={<Icon name='code' color='#ffffff' />}
-                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                        title='VIEW NOW'
-                        onPress={() => this.props.navigation.navigate('Profil')}
-                        
-                      />
                 </View>
                 <View style={{width:'60%'}}>
                   <Text>{c.lastname} {c.firstname}</ Text>
@@ -73,11 +66,9 @@
                     </Collapse>
                     <Collapse style={{flexDirection:'row'}}>
                       <CollapseHeader>
-                        <Icon  style={styles.icon} name="info" type="entypo"  color="white" backgroundColor="black" />
+                        <Icon style={styles.icon} name="info" type="entypo"  color="black" backgroundColor="black" 
+                              onPress={()=> this.props.navigation.navigate('Profil')}  />
                       </CollapseHeader>
-                      <CollapseBody style={{alignItems:'center',justifyContent:'center',padding:10}}>
-                        <Text>{c.email}</Text>
-                      </CollapseBody>
                     </Collapse>
                   </CollapseBody>
                 </Collapse>

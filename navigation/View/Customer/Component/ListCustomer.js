@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
 
 import ListDataCustomer from './ListDataCustomer';
 
 
-import {db} from '../../components/Firebase/firebaseConfig';
+import {db} from '../../../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
 
 
@@ -48,15 +48,17 @@ export default class ListCustomer extends Component {
 
         {this.state.customers.length > 0 ? (
           this.state.customers.map((customer, index) => {
-
+            
+            
           return(
             <ListDataCustomer key={index} customer={customer} navigation={this.props.navigation} />
-          )
+            
+            )
           })
         ) : (
           <Text>No items</Text>
         )}
-      </View>
+      </View> 
     );
   }
 }

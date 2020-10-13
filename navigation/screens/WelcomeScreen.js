@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 
-import AppButton from '../components/AppButton';
-import Colors from '../utils/colors';
-import useStatusBar from '../hooks/useStatusBar';
+import AppButton from '../../components/AppButton';
+import Colors from '../../utils/colors';
+import useStatusBar from '../../hooks/useStatusBar';
 
 
 export default function WelcomeScreen({ navigation }) {
@@ -12,7 +12,7 @@ export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Image source={require('../assets/flame.png')} style={styles.logo} />
+        <Image source={require('../../assets/flame.png')} style={styles.logo} />
       </View>
       <View style={styles.buttonContainer}>
         <AppButton title="Se connecter" onPress={() => navigation.navigate('Login')} />

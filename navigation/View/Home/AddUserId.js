@@ -1,7 +1,7 @@
 import { firestore } from 'firebase';
 import React, { Component } from 'react';
 import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert} from 'react-native';
-import {db} from '../../components/Firebase/firebaseConfig';
+import {db} from '../../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
 
 

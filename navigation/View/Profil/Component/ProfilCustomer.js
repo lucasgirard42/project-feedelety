@@ -8,18 +8,22 @@ import {Card} from 'react-native-elements';
 
 
 export default class ProfilCustomer extends Component{
-
+    constructor(props){
+        super(props);
+        
+      }
 
 
     render(){
+        // const c = this.props.customer;
         return(
             <View>
                 <Card>
                  <Card.Title>HELLO WORLD</Card.Title>
                     <Card.Divider/>
-                    <Card.Image source={require('../../assets/flame.png')} />
+                    {/* <Card.Image source={{uri: c.image }} /> */}
                     <Text style={{marginBottom: 10}}>
-                        The idea with React Native Elements is more about component structure than actual design.
+                    {/* {this.props.customer.lastname}  */}
                     </Text>
                 </Card>
             </View>

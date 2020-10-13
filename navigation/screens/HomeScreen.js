@@ -1,13 +1,11 @@
 import React from "react";
 import {View,StyleSheet,Button,Text,SafeAreaView,ScrollView,} from "react-native";
 
-import useStatusBar from "../hooks/useStatusBar";
-import { logout } from "../components/Firebase/firebase"
-import Constant from "expo-constants";
-import AddUser from "../navigation/HomeScreenComponent/AddUser";
-import firebase  from 'firebase';
-import TestUserId from "../navigation/TestComponent/TestUserId";
+import useStatusBar from "../../hooks/useStatusBar";
+import { logout } from "../../components/Firebase/firebase"
 
+
+import AddUserId from "../../navigation/View/Home/AddUserId";
 
 
 
@@ -24,8 +22,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
-          {/* <AddUser/> */}
-          <TestUserId />
+          <AddUserId />
         </ScrollView>
       </SafeAreaView>
     </View>

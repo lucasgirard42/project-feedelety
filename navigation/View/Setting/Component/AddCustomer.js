@@ -1,43 +1,46 @@
-import { firestore } from 'firebase';
 import React, { Component } from 'react';
-import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert} from 'react-native';
-import {db} from '../../components/Firebase/firebaseConfig';
+import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert, Button, Image, SafeAreaView, ScrollView, KeyboardAvoidingView} from 'react-native';
+import {db} from '../../../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
-import Modal from "./testalert"
+import * as ImagePicker from 'expo-image-picker';
 
 
 
-
-
-
-function AddUsers(entreprise, firstname, lastname, address) {
-    db.ref("users/" + entreprise).push({
+let addCustomer=(userUid,entreprise,firstname, lastname, address,city, email,phone,image) => {
+    db.ref('compagny/'+ userUid+ '/customer' ).push({
+        
         entreprise,
         firstname,
         lastname,
         address,
-        
-    });
-}
+        city,
+        email,
+        phone,
+        image,
+  });
+};
 
-export default class AddUser extends Component{
+
+export default class AddCustomer extends Component{
     state={
+        userUid:"",
         entreprise:"",
         firstname:"",
         lastname:"", 
         address:"",
+        city:"",
         email:"",
-        userEmail: ""
+        phone:"",
+        image: null,
     };
 
     componentDidMount(){
       let self = this
       firebase.auth().onAuthStateChanged(function(user) {
-        
         if (user) {           
-            var user = user.email;
+            var userUid = user.uid;
             self.setState({
-              userEmail: user
+               userUid,
             })         
         } 
       });
@@ -49,32 +52,65 @@ export default class AddUser extends Component{
         firstname: e.nativeEvent.text,
         lastname: e.nativeEvent.text,
         address: e.nativeEvent.text,
+        city: e.nativeEvent.text,
         email: e.nativeEvent.text,
+        phone: e.nativeEvent.text,
+        image: e.nativeEvent.text,
     });
-}
+  }
+
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+    });
+
+    alert(result.uri);
+    console.log(result)
+
+    if (!result.cancelled) {
+      this.setState({ image: result.uri });
+    }
+  };
+
+
+
     render(){
-    return(
+      let { image } = this.state;
+      return(
+          <KeyboardAvoidingView style={styles.container} behavior="padding"  >
         <View style={StyleSheet.main}>
             <TextInput style={styles.itemInput} placeholder = "entreprise" onChangeText ={(entreprise) => this.setState({entreprise})} />
             <TextInput style={styles.itemInput} placeholder = "firstname" onChangeText ={(firstname) => this.setState({firstname})} />
             <TextInput style={styles.itemInput} placeholder = "lastname" onChangeText ={(lastname) => this.setState({lastname})} />
             <TextInput style={styles.itemInput} placeholder = "address" onChangeText ={(address) => this.setState({address})} />
-            <TextInput style={styles.itemInput} placeholder = "email" value={this.state.userEmail} onChangeText ={(email) => this.setState({email})} />
-            <TouchableHighlight style={styles.button} underlayColor="white"   onPress= { () => AddUsers(
+            <TextInput style={styles.itemInput} placeholder = "city" onChangeText ={(city) => this.setState({city})} />
+            <TextInput style={styles.itemInput} placeholder = "email" onChangeText ={(email) => this.setState({email})} />
+            <TextInput style={styles.itemInput} placeholder = "phone" onChangeText ={(phone) => this.setState({phone})} />
+            <Button title="Select Image" onPress={this._pickImage} />
+              {image &&
+              <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+            {/* <TextInput style={styles.itemInput} placeholder = "userUid" value={this.state.userUid} onChangeText ={(userUid) => this.setState({userUid})} /> */}
+
+            <TouchableHighlight style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
+                this.state.userUid,
                 this.state.entreprise,
                 this.state.firstname,
                 this.state.lastname,
                 this.state.address,
+                this.state.city,
                 this.state.email,
+                this.state.phone,
+                this.state.image,
             )}>
-            
-
-            <Modal style={styles.buttonText}>Add</Modal>
+            <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
+            {/* </ScrollView> */}
+            {/* </SafeAreaView> */}
         </View>
+          </KeyboardAvoidingView>
     )
     }
-    
 }
 
 
@@ -119,4 +155,3 @@ const styles = StyleSheet.create({
       justifyContent: "center",
     },
   });
- 
