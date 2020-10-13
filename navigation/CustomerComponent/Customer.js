@@ -1,25 +1,21 @@
 import * as React from "react";
 import { View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import TestphoneCall from "../TestComponent/TestPhoneCall";
 import ListCustomer from "./ListCustomer";
-import ListDataCustomer from "./ListDataCustomer";
-import GoogleMapsTest from "../TestComponent/GoogleMapsTest"
-import TestListCustomer from "../TestComponent/TestListCustomer";
 
+export default class Customer extends React.Component {
 
-
-
-export default function Customer() {
-  return (
-    <View style={styles.container}>
-      <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.scrollView}>
-          <Text style={styles.Text} >Liste des clients</Text>
-          <ListCustomer />
-        </ScrollView>
-      </SafeAreaView>
-    </View>
-  );
+  render(){
+    return (
+      <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+          <ScrollView style={styles.scrollView}>
+            <Text>Liste des clients</Text>
+            <ListCustomer navigation={this.props.navigation} />
+          </ScrollView>
+        </SafeAreaView>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -28,14 +24,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // alignItems:"center",
     // marginTop: 50,
-    
 
   },
-
-  Text: {
-    fontWeight: 'bold',
-    fontSize: 25,
-    textAlign: 'center',
-  },
-
 });

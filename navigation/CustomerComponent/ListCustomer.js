@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+
 import ListDataCustomer from './ListDataCustomer';
 
 
 import {db} from '../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
-import TestListCustomer from '../TestComponent/TestListCustomer';
-
-
-
-
-
-
-
 
 
 export default class ListCustomer extends Component {
   state = {
-    
-    customer: {},
+
+    customers: {},
     data: []
-    
+
   };
 
   componentDidMount() {
@@ -37,23 +30,29 @@ export default class ListCustomer extends Component {
 
       customerRef.on('value', snapshot => {
         let data = snapshot.val();
-        let customer = Object.values(data);
+        let customers = Object.values(data);
 
         self.setState({ 
-          customer: customer,
+          customers: customers,
           data: data
-         });      
-         
-      });
-    })
+         });
+      })
 
+      
+      });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        {this.state.customer.length > 0 ? (
-          <ListDataCustomer customer={this.state.customer} />
+
+        {this.state.customers.length > 0 ? (
+          this.state.customers.map((customer, index) => {
+
+          return(
+            <ListDataCustomer key={index} customer={customer} navigation={this.props.navigation} />
+          )
+          })
         ) : (
           <Text>No items</Text>
         )}
@@ -68,5 +67,5 @@ const styles = StyleSheet.create({
     marginTop: 50,
     flex: 0,
   },
-  
+
 });
