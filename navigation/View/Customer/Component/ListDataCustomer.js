@@ -14,14 +14,13 @@
       
     }
 
-  
-    
-  iconPress(id){
-    console.log(id);
-  }
+  // iconPress(id){
+  //   console.log(id);
+  // }
     render() {
       const c = this.props.customer;
-      
+      console.log(this.props.navigation);
+
       return (
           <View  >
             <Collapse  style={{borderBottomWidth:1,borderTopWidth:1}}>

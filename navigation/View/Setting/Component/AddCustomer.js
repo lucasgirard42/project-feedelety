@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert, Button, Image, SafeAreaView, ScrollView, KeyboardAvoidingView} from 'react-native';
+import {View, Text,TouchableHighlight, StyleSheet,TextInput,  Button, Image, SafeAreaView, ScrollView, KeyboardAvoidingView} from 'react-native';
 import {db} from '../../../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
 import * as ImagePicker from 'expo-image-picker';
@@ -8,7 +8,6 @@ import * as ImagePicker from 'expo-image-picker';
 
 let addCustomer=(userUid,entreprise,firstname, lastname, address,city, email,phone,image) => {
     db.ref('compagny/'+ userUid+ '/customer' ).push({
-        
         entreprise,
         firstname,
         lastname,
@@ -91,7 +90,6 @@ export default class AddCustomer extends Component{
               {image &&
               <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
             {/* <TextInput style={styles.itemInput} placeholder = "userUid" value={this.state.userUid} onChangeText ={(userUid) => this.setState({userUid})} /> */}
-
             <TouchableHighlight style={styles.button} underlayColor="white"  onPress= { () => addCustomer(
                 this.state.userUid,
                 this.state.entreprise,
@@ -105,8 +103,6 @@ export default class AddCustomer extends Component{
             )}>
             <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
-            {/* </ScrollView> */}
-            {/* </SafeAreaView> */}
         </View>
           </KeyboardAvoidingView>
     )

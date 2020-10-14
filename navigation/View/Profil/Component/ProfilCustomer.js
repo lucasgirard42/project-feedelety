@@ -10,7 +10,6 @@ import {Card} from 'react-native-elements';
 export default class ProfilCustomer extends Component{
     constructor(props){
         super(props);
-        
       }
 
 

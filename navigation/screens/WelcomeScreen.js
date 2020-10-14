@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
-
 import AppButton from '../../components/AppButton';
 import Colors from '../../utils/colors';
 import useStatusBar from '../../hooks/useStatusBar';

@@ -1,4 +1,3 @@
-import { firestore } from 'firebase';
 import React, { Component } from 'react';
 import {View, Text,TouchableHighlight, StyleSheet,TextInput, Alert} from 'react-native';
 import {db} from '../../../components/Firebase/firebaseConfig';
@@ -11,8 +10,6 @@ function AddUsers(compagny, userUid,userEmail) {
         compagny,
         userUid,
         userEmail
-        
-        
     });
 }
 
@@ -23,8 +20,6 @@ export default class TestUserId extends Component{
         compagny:"",
         userUid:"",
         userEmail:"",
-        
-      
     };
 
     componentDidMount(){
@@ -54,22 +49,18 @@ export default class TestUserId extends Component{
     return(
         <View style={StyleSheet.main}>
             <TextInput style={styles.itemInput} placeholder = "compagny" onChangeText ={(compagny) => this.setState({compagny})} />
-            
             <TextInput style={styles.itemInput} placeholder = "userUid" value={this.state.userUid} onChangeText ={(userUid) => this.setState({userUid})} />
             <TextInput style={styles.itemInput} placeholder = "email" value={this.state.userEmail} onChangeText ={(email) => this.setState({email})} />
-
             <TouchableHighlight style={styles.button} underlayColor="white"   onPress= { () => AddUsers(
                 this.state.compagny,
                 this.state.userUid,
                 this.state.userEmail,
-                
             )}>
             <Text style={styles.buttonText}>Add</Text>
             </TouchableHighlight>
         </View>
     )
     }
-    
 }
 
 

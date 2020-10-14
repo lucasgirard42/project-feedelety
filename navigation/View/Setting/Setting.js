@@ -1,18 +1,32 @@
-import * as React from "react";
-import { View, Text } from "react-native";
+import React, {Component} from "react";
+import { View, Text,SafeAreaView, ScrollView, StyleSheet  } from "react-native";
 import AddCustomer from "../Setting/Component/AddCustomer";
-import HomeScreen from "../../../components/Firebase/buttonSignOutSetting"
+import HomeScreen from "../../../components/Firebase/buttonSignOutSetting";
 
 
 
-export default function Setting() {
+export default class Setting extends Component {
+  render(){
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={{ fontWeight: 'bold', fontSize: 25, textAlign: 'center'}}>Ajouter un client</Text>
-      <HomeScreen />
-      <AddCustomer />
+    <View >
+      <SafeAreaView >
+        <ScrollView>
+          <Text style={{ fontWeight: 'bold', fontSize: 25, textAlign: 'center'}}>Ajouter un client</Text>
+          <HomeScreen />
+          <AddCustomer />
+        </ScrollView>
+      </SafeAreaView>
     </View>
   );
 }
+}
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    // alignItems:"center",
+    // marginTop: 50,
 
+  },
+});

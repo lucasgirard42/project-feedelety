@@ -1,10 +1,7 @@
 import React from "react";
-import {View,StyleSheet,Button,Text,SafeAreaView,ScrollView,} from "react-native";
-
+import {View,StyleSheet,SafeAreaView,ScrollView, StatusBar} from "react-native";
 import useStatusBar from "../../hooks/useStatusBar";
 import { logout } from "../../components/Firebase/firebase"
-
-
 import AddUserId from "../../navigation/View/Home/AddUserId";
 
 
@@ -20,6 +17,7 @@ export default function HomeScreen() {
   }
   return (
     <View style={styles.container}>
+      <StatusBar hidden={true} />
       <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <AddUserId />

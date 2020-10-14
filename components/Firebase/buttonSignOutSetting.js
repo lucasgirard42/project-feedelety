@@ -1,10 +1,10 @@
 import React from "react";
-import {View,StyleSheet,Text,SafeAreaView,ScrollView,} from "react-native";
+import {View,StyleSheet} from "react-native";
 
 import useStatusBar from "../../hooks/useStatusBar";
 import { logout } from "./firebase";
-import { Button } from "react-native-elements";
-import Constant from "expo-constants";
+import  Icon  from 'react-native-vector-icons/FontAwesome';
+
 
 
 export default function HomeScreen() {
@@ -18,11 +18,7 @@ export default function HomeScreen() {
     }
     return (
       <View style={styles.container}>
-        <Button title="Sign Out" onPress={handleSignOut} />
-        <SafeAreaView style={styles.container}>
-          <ScrollView style={styles.scrollView}>
-          </ScrollView>
-        </SafeAreaView>
+        <Icon style={styles.icon} size={50} name="sign-out"  color="blue" backgroundColor="black"  onPress={handleSignOut} />
       </View>
     );
   }
@@ -30,7 +26,10 @@ export default function HomeScreen() {
   const styles = StyleSheet.create({
     container: {
       flex: 2,
-      position: 'absolute',
+      position: 'relative',
       bottom:0
     },
+    icon: {
+      alignSelf: "flex-end",
+    }
   });
