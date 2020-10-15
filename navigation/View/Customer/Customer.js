@@ -9,7 +9,7 @@ export default class Customer extends React.Component {
       <View style={styles.container}>
         <SafeAreaView style={styles.container}>
           <ScrollView style={styles.scrollView}>
-            <Text>Liste des clients</Text>
+            <Text style={styles.text}>Liste des clients</Text>
             <ListCustomer navigation={this.props.navigation} />
           </ScrollView>
         </SafeAreaView>
@@ -22,8 +22,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    // alignItems:"center",
-    // marginTop: 50,
+  },
 
+  text: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: "center"
+  
   },
 });

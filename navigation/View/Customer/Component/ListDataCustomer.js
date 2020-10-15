@@ -23,8 +23,8 @@
 
       return (
           <View  >
-            <Collapse  style={{borderBottomWidth:1,borderTopWidth:1}}>
-              <CollapseHeader style={{flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#E6E6E6'}}>
+            <Collapse  style={{borderBottomWidth:0,borderTopWidth:0.5}}>
+              <CollapseHeader style={{flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'white'}}>
                 <View  style={{width:'25%',alignItems:'center'}}>
                   <Thumbnail source={{uri: c.image }} />
                 </View>
@@ -32,7 +32,7 @@
                   <Text>{c.lastname} {c.firstname}</ Text>
                 </View>
               </CollapseHeader>
-              <CollapseBody style={{padding:'5%',justifyContent:'space-between',flexDirection:'row',backgroundColor:'#EDEDED'}}>
+              <CollapseBody style={{padding:20,justifyContent:'space-between',flexDirection:'row',backgroundColor:'#F8F8F8'}}>
                 <Collapse style={{flexDirection:'row'}}>
                   <CollapseHeader>
                     <TouchableOpacity onPress={ () => Communication.phonecall (c.phone, true)}>
