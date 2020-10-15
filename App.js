@@ -28,8 +28,9 @@ export default class App extends Component {
     }
   return (
     <Container>
-      <Providers />
+      <Providers/>
     </Container>
   )
   }
 }
+
