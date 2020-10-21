@@ -24,6 +24,9 @@ let addCustomer=(userUid,entreprise,firstname, lastname, address,city, email,pho
         phone,
         image,
   });
+
+  alert( "vous avez ajouté un client");
+    // console.log(alert)
 };
 
 

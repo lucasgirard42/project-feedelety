@@ -68,8 +68,9 @@
                     </Collapse>
                     <Collapse style={{flexDirection:'row'}}>
                       <CollapseHeader>
-                        <Icon style={styles.icon} name="info" type="entypo"  color="black" backgroundColor="black" 
-                              onPress={()=> navigate('Profil' )}  /> 
+                        <TouchableOpacity onPress={()=> navigate('Profil',  c)} >
+                          <Icon style={styles.icon} name="info" type="entypo"  color="white" backgroundColor="black" />
+                        </TouchableOpacity> 
                       </CollapseHeader>
                     </Collapse>
                   </CollapseBody>
