@@ -14,12 +14,15 @@
       
     }
 
-  // iconPress(id){
-  //   console.log(id);
-  // }
+  //   static navigationOptions = {
+  //     title: 'Home',
+  // };
+    
     render() {
       const c = this.props.customer;
-      console.log(this.props.navigation);
+      const { navigate } = this.props.navigation;
+      
+      
 
       return (
           <View  >
@@ -66,7 +69,7 @@
                     <Collapse style={{flexDirection:'row'}}>
                       <CollapseHeader>
                         <Icon style={styles.icon} name="info" type="entypo"  color="black" backgroundColor="black" 
-                              onPress={()=> this.props.navigation.navigate('Profil')}  />
+                              onPress={()=> navigate('Profil' )}  /> 
                       </CollapseHeader>
                     </Collapse>
                   </CollapseBody>
@@ -75,7 +78,6 @@
             );
     }
   }
-
   const styles = StyleSheet.create({
     icon:{
       height:50,
@@ -86,4 +88,3 @@
     },
   });
   AppRegistry.registerComponent('RNCommunications', () => RNCommunications);
-    

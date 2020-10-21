@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import {StyleSheet} from 'react-native';
 import { AppLoading } from 'expo';
-import { Container, Text } from 'native-base';
+import { Container, Header} from 'native-base';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import Providers from './navigation';
+
+
 
 export default class App extends Component {
   constructor(props) {
@@ -23,14 +26,23 @@ export default class App extends Component {
   }
 
   render(){
+    
     if (!this.state.isReady) {
       return <AppLoading />;
     }
-  return (
+    return (
     <Container>
+      <Header style={styles.HeaderColor}/>
       <Providers/>
     </Container>
   )
   }
 }
 
+const styles = StyleSheet.create({
+  HeaderColor:{
+    backgroundColor: "#f8f8ff",
+  },
+  
+    
+})

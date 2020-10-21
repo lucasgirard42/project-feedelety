@@ -9,4 +9,7 @@ npm install react native element
 npm install native bases 
 npm install accordion-collapse-react-native
 npm install react-native-communications,
-npm install expo-image-picker
+npm install expo-image-picker,
+
+
+npm install useStatusbar 

@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
     paddingVertical: 20,
-    color: Colors.primary
+    color: Colors.primary,
+    
   },
   buttonContainer: {
     padding: 20,

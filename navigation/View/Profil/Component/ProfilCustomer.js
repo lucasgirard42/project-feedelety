@@ -1,17 +1,30 @@
 import React, { Component } from "react";
-import { View, Image, StyleSheet, TouchableOpacity, AppRegistry } from "react-native";
-import {Container,Header,Content,Card,CardItem,Thumbnail,Text,Button,Left,Body,Right,} from "native-base";
-
+import { Image, StyleSheet, TouchableOpacity, AppRegistry } from "react-native";
+import {Content,Card,CardItem,Text,} from "native-base";
 import Communication from 'react-native-communications';
 import { Icon } from 'react-native-elements';
+import  Colors  from "../../../../utils/colors";
+
+
 
 export default class ProfilCustomer extends Component {
   constructor(props) {
     super(props);
   }
+//   static navigationOptions = ({ navigation }) => {
+//     return {
+//         title: navigation.getParam('name'),
+        
+//     };
+// };
+ 
 
   render() {
+    // const { navigation } = this.props;
     // const c = this.props.customer;
+    // const { navigate, state } = this.props.navigation.state;
+    
+    // console.log(itemId);
     return (
       // <Container>
       // <Header />
@@ -22,19 +35,17 @@ export default class ProfilCustomer extends Component {
                 source={require("../../../../assets/fondnoiretbleu.jpg")}
                 style={{ height: 200, width: null, flex: 1 }}
               />
-          </CardItem>
-          <CardItem cardBody>
             <Image
               style={styles.itemImage}
               source={require("../../../../assets/Fusajiro_Yamauchi.jpg")}
             />
           </CardItem>
-          <CardItem>
-           <Text>
-               Girard Lucas
+          <CardItem  style={styles.itemCardText}>
+           <Text style={styles.itemText}>
+           Girard lucas 
            </Text>
           </CardItem>
-            <CardItem >
+            <CardItem style={styles.ItemCardIcon} >
                 <TouchableOpacity onPress={ () => Communication.phonecall (c.phone, true)}>
                      <Icon style={styles.icon}  name="phone"  type="entypo" color="white" backgroundColor="#00C829"  />
                 </TouchableOpacity>
@@ -55,31 +66,59 @@ export default class ProfilCustomer extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: 'center',
-  },
-  itemText:{
-      justifyContent: "center",
-      alignItems: 'center',
-  },
+    
+    
 
+  },
+  
+  imageCard:{
+    position: "relative",
+    
+  },
+  
   itemImage: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    position: "absolute",
     width: 150,
     height: 150,
+    top: "50%",
+    left: "32%",
     borderRadius: 150 / 2,
     overflow: "hidden",
-    borderWidth: 1,
-    borderColor: "orange",
+    borderWidth:5,
+    borderColor: "white",
   },
-   icon:{
-      height:50,
-      width: 50,
-      borderRadius: 40,
-      alignContent:'center',
-      justifyContent: "center",
-    },
+
+  itemCardText:{
+    flex:1,
+    display:"flex",
+      position: "absolute",
+      backgroundColor: "transparent",
+      
+      
+      
+  },
+  itemText:{
+    
+    color: Colors.primary,
+    marginLeft: "50%",
+    marginTop: "15%"
+    
+    
+  },
+  ItemCardIcon:{
+    justifyContent:"space-between",
+    marginTop: 20,
+    
+  },
+  icon:{
+     height:50,
+     width: 50,
+     borderRadius: 40,
+    //  alignContent:'center',
+     justifyContent: "center",
+   },
+
   
 });
 AppRegistry.registerComponent('RNCommunications', () => RNCommunications);
+

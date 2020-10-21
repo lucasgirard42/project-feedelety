@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {TouchableOpacity,Button,  Image, StyleSheet } from 'react-native';
-import { Container, Header, Content, Form,Text, Item, Input, Label } from 'native-base';
+import {  Content, Form,Text, Item, Input, Label } from 'native-base';
 import {db} from '../../../../components/Firebase/firebaseConfig';
 import firebase from 'firebase';
 import * as ImagePicker from 'expo-image-picker';
@@ -68,6 +68,7 @@ export default class AddCustomer2 extends Component {
 
   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
+      base64: true,
       allowsEditing: true,
       aspect: [4, 3],
     });

@@ -12,6 +12,8 @@ export default class ListCustomer extends Component {
     data: []
   };
 
+
+
   componentDidMount() {
     let customerRef;
     let self = this
