@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { View, Text,SafeAreaView, ScrollView, StyleSheet  } from "react-native";
-import AddCustomer from "../Setting/Component/AddCustomer2";
+import AddCustomer from "../Setting/Component/AddCustomer";
 import HomeScreen from "../../../components/Firebase/buttonSignOutSetting";
 
 
