@@ -4,6 +4,8 @@
   import { Icon } from 'react-native-elements';
   import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";;
   import {  Thumbnail } from 'native-base';
+  import {db} from '../../../../components/Firebase/firebaseConfig';
+  import firebase from 'firebase';
 
  
   
@@ -11,18 +13,48 @@
   export default class ListDataCustomer extends Component  {
     constructor(props){
       super(props);
+    }
+    
+    state ={
+      userUid: {},
+      customers: {},
+      data: [],
+    }
+    
+    componentDidMount(){
+      let customerRef;
+      let self = this
+      firebase.auth().onAuthStateChanged(function(user){
+       if (user) {
+         var userUid = user.uid;
+         self.setState({userUid})
+         customerRef = db.ref('/compangny/'+ userUid + '/customer');
+        }
+
+      });
+    }
+    
+    
+    remove_press(){
+      
+      Alert.alert("Confirm Dialog",
+      "Are you sure to remove" + this.props.customer.firstname
+      + "?",
+      [
+        {text: "yes", onPress : ()=>{
+          // db.ref('/compagny/'+ this.state.userUid + '/customer/' ).remove();
+          db.ref('/compagny/' + this.state.userUid).child('/customer/').remove();
+        } }, 
+        {text: 'No'}
+      ]
+      )
       
     }
-
-  //   static navigationOptions = {
-  //     title: 'Home',
-  // };
     
     render() {
+      
       const c = this.props.customer;
       const { navigate } = this.props.navigation;
-      
-      
 
       return (
           <View  >
@@ -33,6 +65,7 @@
                 </View>
                 <View style={{width:'60%'}}>
                   <Text>{c.lastname} {c.firstname}</ Text>
+                  <Icon name="delete" onPress={() => this.remove_press()}/>
                 </View>
               </CollapseHeader>
               <CollapseBody style={{padding:20,justifyContent:'space-between',flexDirection:'row',backgroundColor:'#F8F8F8'}}>

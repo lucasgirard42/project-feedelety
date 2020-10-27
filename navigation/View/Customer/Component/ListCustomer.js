@@ -9,11 +9,12 @@ import firebase from 'firebase';
 export default class ListCustomer extends Component {
   state = {
     customers: {},
-    data: []
+    data: [],
   };
-
-
-
+  
+  
+  
+  
   componentDidMount() {
     let customerRef;
     let self = this
@@ -32,23 +33,26 @@ export default class ListCustomer extends Component {
           customers: customers,
           data: data
          });
+         
       })
     });
   }
 
   render() {
-   
+    
     return (
       <View style={styles.container}>
         {this.state.customers.length > 0 ? (
           this.state.customers.map((customer, index) => {
+            
+            
           return(
-            <ListDataCustomer key={index} customer={customer} navigation={this.props.navigation} />
+            <ListDataCustomer key={index} customer={customer} navigation={this.props.navigation}/>
             )
           })
-        ) : (
-          <Text>No items</Text>
-        )}
+          ) : (
+            <Text>No items</Text>
+            )}
       </View> 
     );
   }
