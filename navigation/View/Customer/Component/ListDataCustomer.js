@@ -1,5 +1,5 @@
   import React, { Component } from 'react';
-  import { View, Text, StyleSheet,AppRegistry,TouchableOpacity,Button, Alert } from 'react-native';
+  import { View, Text, StyleSheet,AppRegistry,TouchableOpacity, Alert } from 'react-native';
   import Communication from 'react-native-communications';
   import { Icon } from 'react-native-elements';
   import { Collapse, CollapseHeader, CollapseBody } from "accordion-collapse-react-native";;
@@ -13,12 +13,12 @@
   export default class ListDataCustomer extends Component  {
     constructor(props){
       super(props);
+      console.log(this.props.data);
     }
     
     state ={
       userUid: {},
-      customers: {},
-      data: [],
+      // customers: {},
     }
     
     componentDidMount(){
@@ -32,13 +32,14 @@
         }
 
       });
+      
     }
     
     
     remove_press(){
       
       Alert.alert("Confirm Dialog",
-      "Are you sure to remove" + this.props.customer.firstname
+      "Are you sure to remove " + this.props.customer.firstname
       + "?",
       [
         {text: "yes", onPress : ()=>{
@@ -53,6 +54,7 @@
     
     render() {
       
+      
       const c = this.props.customer;
       const { navigate } = this.props.navigation;
 
@@ -65,14 +67,14 @@
                 </View>
                 <View style={{width:'60%'}}>
                   <Text>{c.lastname} {c.firstname}</ Text>
-                  <Icon name="delete" onPress={() => this.remove_press()}/>
+                  <Icon style={styles.deleteIcon} name="delete" color="red" onPress={() => this.remove_press()}/>
                 </View>
               </CollapseHeader>
               <CollapseBody style={{padding:20,justifyContent:'space-between',flexDirection:'row',backgroundColor:'#F8F8F8'}}>
                 <Collapse style={{flexDirection:'row'}}>
                   <CollapseHeader>
                     <TouchableOpacity onPress={ () => Communication.phonecall (c.phone, true)}>
-                      <Icon style={styles.icon}  name="phone"  type="entypo" color="white" backgroundColor="#00C829"  />
+                      <Icon style={styles.icon}  name="phone" color="red"  type="entypo" color="white" backgroundColor="#00C829"  />
                     </TouchableOpacity>
                   </CollapseHeader>
                   <CollapseBody style={{alignItems:'center',justifyContent:'center',padding:10}}>
@@ -120,5 +122,9 @@
       alignContent:'center',
       justifyContent: "center",
     },
+
+    
   });
+
+
   AppRegistry.registerComponent('RNCommunications', () => RNCommunications);

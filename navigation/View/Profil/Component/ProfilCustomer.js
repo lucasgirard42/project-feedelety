@@ -4,14 +4,15 @@ import {Content,Card,CardItem,Text,} from "native-base";
 import Communication from 'react-native-communications';
 import { Icon } from 'react-native-elements';
 import  Colors  from "../../../../utils/colors";
-import MapView from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import ProfilCalendarCustomer from "./ProfilCalendarCustomer";
 
 
 
 export default class ProfilCustomer extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    
   }
 
   render() {
@@ -58,8 +59,22 @@ export default class ProfilCustomer extends Component {
             </Text>
           </CardItem>
         </Card>
-        <Card style={styles.map}>
-            <MapView  style={styles.mapStyle} />
+        <Card>
+          <CardItem style={{ justifyContent:'center', margin:"auto", }}>
+            <ProfilCalendarCustomer />
+          </CardItem>
+        </Card>
+        <Card style={styles.map} >
+            <MapView  style={styles.mapStyle} 
+                      provider={PROVIDER_GOOGLE} 
+                      showsUserLocation 
+                      initialRegion={{latitude: 46.034432, longitude: 4.072695, latitudeDelta: 0.009, longitudeDelta: 0.009, }}
+                      >
+            <MapView.Marker coordinate={{latitude: 46.034432, longitude: 4.072695}} 
+                            title={c.firstame} 
+                            descritpion={c.entreprise} 
+                            />
+            </MapView>
         </Card>
       </Content>
     );

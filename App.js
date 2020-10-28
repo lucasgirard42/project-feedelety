@@ -8,6 +8,7 @@ import Providers from './navigation';
 
 
 
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,7 @@ export default class App extends Component {
       isReady: false,
     };
   }
-
+  
   async componentDidMount() {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf'),
@@ -24,19 +25,19 @@ export default class App extends Component {
     });
     this.setState({ isReady: true });
   }
-
+  
   render(){
     
     if (!this.state.isReady) {
       return <AppLoading />;
     }
     return (
-    <Container>
+      <Container>
       <Header style={styles.HeaderColor}/>
       <Providers/>
     </Container>
   )
-  }
+}
 }
 
 const styles = StyleSheet.create({
@@ -44,5 +45,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#f8f8ff",
   },
   
-    
+  
 })
