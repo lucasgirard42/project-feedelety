@@ -1,61 +1,70 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
-import ListDataCustomer from './ListDataCustomer';
-import {db} from '../../../../components/Firebase/firebaseConfig';
-import firebase from 'firebase';
-
-
+import React, { Component } from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
+import ListDataCustomer from "./ListDataCustomer";
+import { db } from "../../../../components/Firebase/firebaseConfig";
+import firebase from "firebase";
 
 export default class ListCustomer extends Component {
   state = {
     customers: {},
     data: [],
+    customerIds: [],
+    // userUid: {},
   };
-  
-  
-  
-  
-  
+
   componentDidMount() {
     let customerRef;
-    let self = this
-    firebase.auth().onAuthStateChanged(function(user){
-      
+    let self = this;
+    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         var userUid = user.uid;
-        self.setState({userUid})
-        customerRef = db.ref('/compagny/'+ userUid + '/customer');
+        self.setState({ userUid });
+        customerRef = db.ref("/compagny/" + userUid + "/customer");
       }
-      
-      customerRef.on('value', snapshot => {
+
+      customerRef.on("value", (snapshot) => {
         let data = snapshot.val();
+        console.log(data);
         let customers = Object.values(data);
-        self.setState({ 
+        const customerIds = Object.keys(data);
+
+        self.setState({
           customers: customers,
-          data: data
+          data: data,
+          customerIds: customerIds,
         });
-      })
+      });
     });
   }
+
 
   render() {
     return (
       <View style={styles.container}>
-        {this.state.customers.length > 0 ? (
-          this.state.customers.map((customer, index ) => {
+        {
+            Object.keys(this.state.data).map((customerId, index) => {
+
+              console.log(this.state.data[customerId]);
+              return (
+                <ListDataCustomer
+                  key={index}
+                  customer={this.state.data[customerId]}
+                  navigation={this.props.navigation}
+                  customerIds={customerId}
+                />
+              );
+          //   })
+          //   ) : (
+          //   <Text>No items</Text>
+          // )}
+            } )
+          }
+          
             
-            return(
-              <ListDataCustomer key={index} customer={customer} navigation={this.props.navigation} data={this.state.data} />
-              )
-            })
-            ) : (
-              <Text>No items</Text>
-              )}
-      </View> 
+      </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -63,5 +72,4 @@ const styles = StyleSheet.create({
     marginTop: 50,
     flex: 0,
   },
-
 });

@@ -13,48 +13,47 @@
   export default class ListDataCustomer extends Component  {
     constructor(props){
       super(props);
-      console.log(this.props.data);
+      // console.log(Object.keys(this.props.data));
+      // console.log('tott');
+      // console.log(this.props.customerIds);
+      // console.log(props);
+      console.log(props);
     }
     
     state ={
       userUid: {},
-      // customers: {},
+      customerIds: [],
     }
+
     
     componentDidMount(){
       let customerRef;
       let self = this
       firebase.auth().onAuthStateChanged(function(user){
-       if (user) {
-         var userUid = user.uid;
-         self.setState({userUid})
-         customerRef = db.ref('/compangny/'+ userUid + '/customer');
+        if (user) {
+          var userUid = user.uid;
+       self.setState({userUid})
+          customerRef = db.ref('/compangny/'+ userUid + '/customer');
         }
-
       });
-      
     }
+
     
     
-    remove_press(){
-      
+    remove_press(customer_id){
       Alert.alert("Confirm Dialog",
       "Are you sure to remove " + this.props.customer.firstname
       + "?",
       [
         {text: "yes", onPress : ()=>{
-          // db.ref('/compagny/'+ this.state.userUid + '/customer/' ).remove();
-          db.ref('/compagny/' + this.state.userUid).child('/customer/').remove();
+          db.ref('compagny/' + this.state.userUid).child('/customer/' + customer_id).remove();
         } }, 
         {text: 'No'}
       ]
       )
-      
     }
     
     render() {
-      
-      
       const c = this.props.customer;
       const { navigate } = this.props.navigation;
 
@@ -67,7 +66,7 @@
                 </View>
                 <View style={{width:'60%'}}>
                   <Text>{c.lastname} {c.firstname}</ Text>
-                  <Icon style={styles.deleteIcon} name="delete" color="red" onPress={() => this.remove_press()}/>
+                  <Icon style={styles.deleteIcon} name="delete" color="red" onPress={() => this.remove_press(this.props.customerIds)}/>
                 </View>
               </CollapseHeader>
               <CollapseBody style={{padding:20,justifyContent:'space-between',flexDirection:'row',backgroundColor:'#F8F8F8'}}>
@@ -122,8 +121,6 @@
       alignContent:'center',
       justifyContent: "center",
     },
-
-    
   });
 
 

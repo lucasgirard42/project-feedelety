@@ -11,7 +11,7 @@ export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Image source={require('../../assets/flame.png')} style={styles.logo} />
+        <Image source={require('../../assets/Logo_feedelity_black.png')} style={styles.logo} />
       </View>
       <View style={styles.buttonContainer}>
         <AppButton title="Se connecter" onPress={() => navigation.navigate('Login')} />
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   logo: {
-    width: 300,
+    width: 250,
     height: 125
   },
   subtitle: {
