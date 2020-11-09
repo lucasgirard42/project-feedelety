@@ -3,7 +3,7 @@ import {View, Button, Platform, StyleSheet, Text} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function ProfilCalendarCustomer () {
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 
@@ -26,15 +26,18 @@ export default function ProfilCalendarCustomer () {
     showMode('time');
   };
 
+  const heure = date.toLocaleTimeString('fr-FR', { hour: "2-digit", minute: '2-digit', second: undefined }).slice(0, -3);
+
   return (
     <View>
       <View style={styles.container} >
         <Button style={styles.buttonCalendar} onPress={showDatepicker} title="Show date " />
-        <Text></Text>
+        <Text>{date.toLocaleDateString('fr-FR', { hour: "numeric", minute: 'numeric' })}</Text>
       </View>
       <View>
         <Button onPress={showTimepicker} title="Show time " />
-        <Text></Text>
+        <Text>{heure}</Text> 
+         {/* pas possible de passer en option les seconde undefined sur Adroid, use slice  */}
       </View>
       {show && (
         <DateTimePicker
